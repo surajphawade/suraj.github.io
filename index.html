@@ -4,127 +4,160 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Suraj Phawade | DevOps Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f5f7fa;
-      color: #333;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
       line-height: 1.6;
+      scroll-behavior: smooth;
     }
     header {
-      background: #0d1117;
-      color: #fff;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
       padding: 2rem;
     }
     header h1 {
-      margin: 0;
-      font-size: 2.5rem;
+      font-size: 3rem;
+      font-weight: 600;
     }
     header p {
+      margin-top: 1rem;
       font-size: 1.2rem;
-      color: #9da5b4;
+      color: #ddd;
+    }
+    nav {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      background: rgba(0,0,0,0.6);
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      z-index: 100;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #00f2fe;
     }
     section {
-      max-width: 900px;
+      max-width: 1000px;
       margin: auto;
-      padding: 2rem;
+      padding: 4rem 2rem;
     }
     h2 {
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1rem;
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
     }
-    .skills span {
-      display: inline-block;
-      background: #e0e7ff;
-      color: #1e3a8a;
-      padding: 0.4rem 0.8rem;
-      margin: 0.3rem;
-      border-radius: 8px;
-      font-size: 0.9rem;
+    .skills, .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
     }
-    .projects div {
-      background: #fff;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    .skill, .project {
+      background: rgba(255,255,255,0.05);
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .skill:hover, .project:hover {
+      transform: translateY(-5px);
+      background: rgba(255,255,255,0.1);
     }
     footer {
       text-align: center;
-      padding: 1rem;
-      background: #0d1117;
-      color: #9da5b4;
+      padding: 1.5rem;
+      background: #000;
+      color: #aaa;
     }
-    a {
-      color: #2563eb;
+    .btn {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      background: linear-gradient(45deg,#00f2fe,#4facfe);
+      color: #000;
+      font-weight: bold;
       text-decoration: none;
+      transition: 0.3s;
     }
-    a:hover {
-      text-decoration: underline;
-    }
+    .btn:hover { opacity: 0.8; }
   </style>
 </head>
 <body>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
   <header>
-    <h1>Suraj Phawade</h1>
-    <p>Cloud & DevOps Engineer | Azure | Terraform | CI/CD | Docker | Kubernetes</p>
+    <h1>Hi, I'm Suraj 👋</h1>
+    <p>Cloud & DevOps Engineer | Azure | Terraform | Kubernetes | CI/CD</p>
+    <a href="#projects" class="btn">View My Work</a>
   </header>
 
-  <section>
+  <section id="about">
     <h2>About Me</h2>
     <p>
-      I am a Cloud & DevOps Engineer passionate about automation, cloud infrastructure,
-      and CI/CD practices. With experience in Azure, Terraform, Kubernetes, and monitoring tools,
-      I focus on improving deployment speed, reliability, and scalability.
+      I'm a DevOps Engineer passionate about automation, infrastructure as code,
+      and building scalable CI/CD pipelines. Skilled in Azure, Terraform,
+      Docker, and Kubernetes with a focus on reliability and performance.
     </p>
   </section>
 
-  <section class="skills">
+  <section id="skills">
     <h2>Skills</h2>
-    <span>Azure</span>
-    <span>Terraform</span>
-    <span>CI/CD Pipelines</span>
-    <span>GitHub Actions</span>
-    <span>Azure DevOps</span>
-    <span>Docker</span>
-    <span>Kubernetes (AKS)</span>
-    <span>PowerShell</span>
-    <span>Bash</span>
-    <span>Monitoring (Azure Monitor, Log Analytics, Datadog)</span>
+    <div class="skills">
+      <div class="skill">☁️ Azure</div>
+      <div class="skill">🛠 Terraform</div>
+      <div class="skill">⚙️ CI/CD Pipelines</div>
+      <div class="skill">🐳 Docker</div>
+      <div class="skill">☸️ Kubernetes</div>
+      <div class="skill">📊 Monitoring</div>
+    </div>
   </section>
 
-  <section class="projects">
+  <section id="projects">
     <h2>Projects</h2>
-    <div>
-      <h3>Cloud Onboarding Platform – TD Bank</h3>
-      <p>
-        Automated deployments using Azure DevOps pipelines and Terraform for infrastructure provisioning.
-        Containerized applications using Docker and deployed to AKS. Integrated Key Vault for secure secrets
-        management and enabled monitoring with Azure Monitor.
-      </p>
-    </div>
-    <div>
-      <h3>CI/CD Pipeline Automation</h3>
-      <p>
-        Built robust CI/CD pipelines to streamline deployments, reduce manual errors, and improve delivery speed.
-      </p>
+    <div class="projects">
+      <div class="project">
+        <h3>Cloud Onboarding Platform</h3>
+        <p>Automated deployments with Azure DevOps pipelines & Terraform. 
+        Containerized apps on AKS with secure secrets in Key Vault.</p>
+      </div>
+      <div class="project">
+        <h3>CI/CD Pipeline Automation</h3>
+        <p>End-to-end pipelines to reduce errors and improve deployment speed.</p>
+      </div>
     </div>
   </section>
 
-  <section>
+  <section id="contact">
     <h2>Contact</h2>
     <p>
-      📧 Email: <a href="mailto:suraj@example.com">suraj@example.com</a><br />
-      💼 LinkedIn: <a href="https://www.linkedin.com/in/suraj-phawade-8a26a31b2/">linkedin.com/in/suraj-phawade</a><br />
-      💻 GitHub: <a href="https://github.com/your-username">github.com/your-username</a>
+      📧 <a href="mailto:suraj@example.com">suraj@example.com</a><br>
+      💼 <a href="https://www.linkedin.com/in/suraj-phawade-8a26a31b2/">LinkedIn</a><br>
+      💻 <a href="https://github.com/surajphawade">GitHub</a>
     </p>
   </section>
 
   <footer>
-    <p>© 2025 Suraj Phawade | Built with ❤️ & GitHub Pages</p>
+    <p>© 2025 Suraj Phawade | Built with ❤️</p>
   </footer>
 </body>
 </html>

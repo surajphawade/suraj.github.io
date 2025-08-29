@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Suraj Phawade | DevOps Engineer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suraj Phawade | Cloud & DevOps Engineer</title>
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/2d9e5ef6a9.js" crossorigin="anonymous"></script>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {margin:0; padding:0; box-sizing:border-box;}
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Inter', sans-serif;
       background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       color: #fff;
       line-height: 1.6;
@@ -23,141 +25,163 @@
       text-align: center;
       padding: 2rem;
     }
-    header h1 {
-      font-size: 3rem;
-      font-weight: 600;
-    }
-    header p {
-      margin-top: 1rem;
-      font-size: 1.2rem;
-      color: #ddd;
-    }
+    header h1 { font-size: 3rem; font-weight: 800; }
+    header p { margin-top: 1rem; font-size: 1.3rem; color: #ddd; }
     nav {
       position: fixed;
       top: 0; left: 0; width: 100%;
       background: rgba(0,0,0,0.6);
       padding: 1rem;
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      z-index: 100;
+      display: flex; justify-content: center; gap: 2rem;
+      z-index: 1000;
     }
     nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
+      color: #fff; text-decoration: none; font-weight: 600;
       transition: 0.3s;
     }
-    nav a:hover {
-      color: #00f2fe;
-    }
-    section {
-      max-width: 1000px;
-      margin: auto;
-      padding: 4rem 2rem;
-    }
-    h2 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 2rem;
-    }
-    .skills, .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    nav a:hover { color: #00f2fe; }
+    section { max-width: 1100px; margin: auto; padding: 5rem 2rem; }
+    h2 { text-align:center; font-size: 2.2rem; margin-bottom: 2rem; }
+    .fade-in { opacity:0; transform: translateY(30px); transition: 0.8s; }
+    .show { opacity:1; transform: translateY(0); }
+
+    /* Skills Grid */
+    .skills, .projects, .certs {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
       gap: 1.5rem;
     }
-    .skill, .project {
-      background: rgba(255,255,255,0.05);
+    .card {
+      background: rgba(255,255,255,0.07);
       padding: 2rem;
-      border-radius: 12px;
+      border-radius: 15px;
       text-align: center;
       transition: transform 0.3s;
     }
-    .skill:hover, .project:hover {
-      transform: translateY(-5px);
-      background: rgba(255,255,255,0.1);
+    .card:hover { transform: translateY(-8px); background: rgba(255,255,255,0.15);}
+    .card i { font-size: 2rem; margin-bottom: 1rem; color: #00f2fe;}
+
+    /* Contact */
+    .contact {
+      text-align:center;
     }
+    .contact a {
+      display:inline-block; margin: 1rem; font-size: 1.2rem;
+      color:#fff; text-decoration:none; padding:0.6rem 1.2rem;
+      border-radius: 30px; background: linear-gradient(45deg,#00f2fe,#4facfe);
+      transition:0.3s;
+    }
+    .contact a:hover { opacity:0.8; transform: scale(1.05);}
     footer {
-      text-align: center;
-      padding: 1.5rem;
-      background: #000;
-      color: #aaa;
+      text-align:center; padding:1.5rem; background:#000; color:#aaa;
     }
-    .btn {
-      display: inline-block;
-      margin-top: 1.5rem;
-      padding: 0.8rem 1.5rem;
-      border-radius: 25px;
-      background: linear-gradient(45deg,#00f2fe,#4facfe);
-      color: #000;
-      font-weight: bold;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-    .btn:hover { opacity: 0.8; }
   </style>
 </head>
 <body>
   <nav>
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#certifications">Certifications</a>
     <a href="#contact">Contact</a>
   </nav>
 
   <header>
-    <h1>Hi, I'm Suraj 👋</h1>
+    <h1>👋 Hi, I'm Suraj Phawade</h1>
     <p>Cloud & DevOps Engineer | Azure | Terraform | Kubernetes | CI/CD</p>
-    <a href="#projects" class="btn">View My Work</a>
   </header>
 
-  <section id="about">
-    <h2>About Me</h2>
+  <section id="about" class="fade-in">
+    <h2>Professional Summary</h2>
     <p>
-      I'm a DevOps Engineer passionate about automation, infrastructure as code,
-      and building scalable CI/CD pipelines. Skilled in Azure, Terraform,
-      Docker, and Kubernetes with a focus on reliability and performance.
+      Cloud and DevOps Engineer with 3+ years of IT experience, specializing in Infrastructure as Code (IaC) using Terraform, CI/CD pipeline development in Azure DevOps, and Azure Cloud services. 
+      Proven ability to automate deployments, manage scalable infrastructure, and streamline delivery processes. 
+      Certified in Azure Administrator (AZ-104), Azure DevOps Engineer Expert (AZ-400), and Azure Fundamentals (AZ-900).
     </p>
   </section>
 
-  <section id="skills">
-    <h2>Skills</h2>
+  <section id="skills" class="fade-in">
+    <h2>Technical Skills</h2>
     <div class="skills">
-      <div class="skill">☁️ Azure</div>
-      <div class="skill">🛠 Terraform</div>
-      <div class="skill">⚙️ CI/CD Pipelines</div>
-      <div class="skill">🐳 Docker</div>
-      <div class="skill">☸️ Kubernetes</div>
-      <div class="skill">📊 Monitoring</div>
+      <div class="card"><i class="fas fa-cloud"></i> Azure, AWS (basic)</div>
+      <div class="card"><i class="fas fa-code"></i> Terraform, IaC</div>
+      <div class="card"><i class="fas fa-project-diagram"></i> Azure DevOps CI/CD</div>
+      <div class="card"><i class="fab fa-docker"></i> Docker, Kubernetes (AKS)</div>
+      <div class="card"><i class="fas fa-chart-line"></i> Monitoring (Datadog, Log Analytics)</div>
+      <div class="card"><i class="fas fa-terminal"></i> Bash, PowerShell</div>
     </div>
   </section>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects">
-      <div class="project">
-        <h3>Cloud Onboarding Platform</h3>
-        <p>Automated deployments with Azure DevOps pipelines & Terraform. 
-        Containerized apps on AKS with secure secrets in Key Vault.</p>
-      </div>
-      <div class="project">
-        <h3>CI/CD Pipeline Automation</h3>
-        <p>End-to-end pipelines to reduce errors and improve deployment speed.</p>
-      </div>
+  <section id="experience" class="fade-in">
+    <h2>Professional Experience</h2>
+    <div class="card">
+      <h3>Tata Consultancy Services (TCS) – TD Bank Project</h3>
+      <p><b>Role:</b> Azure DevOps Engineer (2022 – Present)</p>
+      <ul>
+        <li>Designed and implemented CI/CD pipelines in Azure DevOps (YAML + Classic).</li>
+        <li>Developed reusable Terraform modules for Azure resources (VNet, AKS, Key Vault, ACR).</li>
+        <li>Automated provisioning with Terraform Cloud + Azure DevOps integration.</li>
+        <li>Implemented secret management using Azure Key Vault.</li>
+        <li>Containerized applications (.NET, Python) deployed to AKS.</li>
+        <li>Configured monitoring with Azure Monitor, Log Analytics, and Datadog.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Data Analyst – Previous Role</h3>
+      <ul>
+        <li>Managed data pipelines with Azure Data Factory (ADF).</li>
+        <li>Automated data validation in SQL, reducing manual efforts by 40%.</li>
+        <li>Monitored system health with Datadog, Azure Monitor, Tableau.</li>
+        <li>Created incident reports & automated alerts for proactive monitoring.</li>
+      </ul>
     </div>
   </section>
 
-  <section id="contact">
+  <section id="education" class="fade-in">
+    <h2>Education</h2>
+    <div class="card">
+      <p><b>Bachelor of Computer Engineering</b></p>
+      <p>Savitribai Phule Pune University (2017 – 2020)</p>
+    </div>
+  </section>
+
+  <section id="certifications" class="fade-in">
+    <h2>Certifications</h2>
+    <div class="certs">
+      <div class="card">AZ-400 – DevOps Engineer Expert</div>
+      <div class="card">AZ-104 – Azure Administrator Associate</div>
+      <div class="card">AZ-900 – Azure Fundamentals</div>
+      <div class="card">AWS Cloud Practitioner</div>
+      <div class="card">Azure DevOps Fundamentals – Noble Work Foundation</div>
+    </div>
+  </section>
+
+  <section id="contact" class="fade-in">
     <h2>Contact</h2>
-    <p>
-      📧 <a href="mailto:suraj@example.com">suraj@example.com</a><br>
-      💼 <a href="https://www.linkedin.com/in/suraj-phawade-8a26a31b2/">LinkedIn</a><br>
-      💻 <a href="https://github.com/surajphawade">GitHub</a>
-    </p>
+    <div class="contact">
+      <a href="mailto:suraj.phawade1@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+      <a href="tel:+919834207374"><i class="fas fa-phone"></i> Call</a>
+      <a href="https://www.linkedin.com/in/suraj-phawade-8a26a31b2/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/surajphawade" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+    </div>
   </section>
 
   <footer>
-    <p>© 2025 Suraj Phawade | Built with ❤️</p>
+    <p>© 2025 Suraj Phawade | Built with ❤️ using HTML, CSS & JS</p>
   </footer>
+
+  <script>
+    // Fade-in animation on scroll
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.2 };
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+    faders.forEach(fader => { appearOnScroll.observe(fader); });
+  </script>
 </body>
 </html>

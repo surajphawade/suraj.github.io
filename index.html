@@ -8,23 +8,23 @@
   <script src="https://kit.fontawesome.com/2d9e5ef6a9.js" crossorigin="anonymous"></script>
   <style>
     :root {
-      --main-bg: #f7fafd;
-      --accent: #0071e3;
-      --accent2: #00c3ff;
-      --card-bg: #fff;
-      --shadow: 0 6px 24px 0 rgba(31,38,135,0.13);
-      --radius: 22px;
-      --dark: #1a2331;
-      --gray: #697089;
-      --light: #f6f8fa;
+      --main-bg: linear-gradient(135deg, #232946 0%, #16161a 100%);
+      --accent: #3da9fc;
+      --accent2: #90b4ce;
+      --card-bg: rgba(34, 40, 49, 0.85);
+      --shadow: 0 8px 32px 0 rgba(31,38,135,0.23);
+      --radius: 32px;
+      --dark: #f5f7fa;
+      --gray: #a9adc1;
+      --light: #f4f6fb;
       --transition: 0.3s cubic-bezier(.4,0,.2,1);
     }
     body {
       font-family: 'Inter', Arial, sans-serif;
+      min-height: 100vh;
       background: var(--main-bg);
       color: var(--dark);
       margin: 0;
-      min-height: 100vh;
       line-height: 1.7;
       transition: background 0.6s;
     }
@@ -32,7 +32,7 @@
       width: 100%;
       position: sticky;
       top: 0; left: 0;
-      background: rgba(255,255,255,0.93);
+      background: rgba(34, 40, 49, 0.97);
       box-shadow: var(--shadow);
       display: flex; justify-content: center; align-items: center; gap: 1.5rem;
       padding: 1rem 0;
@@ -73,7 +73,7 @@
     }
     header h2 {
       font-size: 1.5rem;
-      color: var(--gray);
+      color: var(--accent2);
       font-weight: 700;
       margin-bottom: 1.1rem;
     }
@@ -94,15 +94,50 @@
       gap: 0.5rem;
     }
     .contact-info a:hover { color: var(--accent); }
-    .summary {
+    /* --- Enhanced Glassmorphism Summary --- */
+    .summary-glass {
       max-width: 700px;
-      margin: 0 auto 2.5rem auto;
-      font-size: 1.14rem;
-      color: #2f3547;
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      padding: 1.6rem 1.3rem;
+      margin: 2.2rem auto 2.7rem auto;
+      background: rgba(40, 52, 72, 0.60);
       box-shadow: var(--shadow);
+      border: 1.5px solid rgba(255,255,255,0.10);
+      border-radius: 32px;
+      padding: 2.2rem 1.6rem 2rem 1.6rem;
+      backdrop-filter: blur(14px);
+      text-align: center;
+      color: #f5f7fa;
+      position: relative;
+      overflow: hidden;
+    }
+    .summary-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #3da9fc;
+      letter-spacing: 0.03em;
+      margin-bottom: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      justify-content: center;
+    }
+    .summary-text {
+      font-size: 1.16rem;
+      color: #d6e6fd;
+      line-height: 1.8;
+    }
+    .cert-badges {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.2rem;
+      margin-top: 1.1rem;
+      font-size: 1.09rem;
+      color: #ffe266;
+    }
+    .cert-badges i {
+      color: #3da9fc;
+      font-size: 1.18rem;
+      margin-right: 0.25rem;
     }
     section {
       margin-bottom: 2.9rem;
@@ -142,7 +177,7 @@
     }
     .skill-card:hover {
       transform: translateY(-6px) scale(1.04);
-      box-shadow: 0 12px 28px 0 rgba(31,38,135,0.18);
+      box-shadow: 0 12px 28px 0 rgba(61,169,252,0.20);
     }
     /* Experience */
     .exp-block {
@@ -171,7 +206,7 @@
     }
     .exp-date {
       font-size: 0.98rem;
-      color: var(--gray);
+      color: var(--accent2);
       margin-left: auto;
     }
     .exp-client {
@@ -183,10 +218,6 @@
       font-weight: 700;
       color: var(--accent2);
       margin-bottom: 0.5rem;
-    }
-    .exp-desc {
-      font-size: 1.07rem;
-      color: #2f3547;
     }
     .exp-list {
       margin: 0.5rem 0 0 1.1rem;
@@ -230,7 +261,7 @@
     /* Footer */
     footer {
       text-align: center;
-      color: #888;
+      color: #a9adc1;
       padding: 1.8rem 0 1.2rem 0;
       font-size: 1.01rem;
       background: none;
@@ -244,6 +275,7 @@
     }
     @media (max-width: 420px) {
       header h1 { font-size: 1.3rem;}
+      .summary-glass { padding: 1.1rem 0.5rem;}
     }
   </style>
 </head>
@@ -265,8 +297,18 @@
         <a href="mailto:suraj.phawade1@gmail.com"><i class="fas fa-envelope"></i> suraj.phawade1@gmail.com</a>
         <a href="https://www.linkedin.com/in/suraj-phawade-8a26a31b2/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
       </div>
-      <div class="summary">
-        Cloud and DevOps Engineer with 3+ years of IT experience and 3 years of DevOps project involvement, specializing in Infrastructure as Code (IaC) using Terraform, CI/CD pipeline development in Azure DevOps, and Azure Cloud services. Proven ability to automate deployments, manage scalable infrastructure, and streamline delivery processes. Certified in Azure Administrator (AZ-104), Azure DevOps Engineer Expert (AZ-400), and Azure Fundamentals (AZ-900).
+      <!-- Enhanced Professional Summary -->
+      <div class="summary-glass">
+        <div class="summary-title"><i class="fas fa-user-tie"></i> Professional Summary</div>
+        <div class="summary-text">
+          Cloud and DevOps Engineer with <b>3+ years</b> of IT experience, specializing in <b>Infrastructure as Code (IaC)</b> using <b>Terraform</b>, <b>CI/CD pipelines</b> in Azure DevOps, and Azure Cloud services.<br><br>
+          Proven ability to <b>automate deployments</b>, manage <b>scalable infrastructure</b>, and streamline delivery processes.<br><br>
+          <span class="cert-badges">
+            <i class="fab fa-microsoft"></i> AZ-104
+            <i class="fab fa-microsoft"></i> AZ-400
+            <i class="fab fa-microsoft"></i> AZ-900
+          </span>
+        </div>
       </div>
     </header>
     <section id="skills">

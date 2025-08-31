@@ -1,187 +1,636 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Suraj Phawade | Cloud & DevOps Engineer</title>
-  <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/2d9e5ef6a9.js" crossorigin="anonymous"></script>
   <style>
-    * {margin:0; padding:0; box-sizing:border-box;}
+    :root {
+      --primary-light: #f5f5f7;
+      --primary-dark: #18181a;
+      --accent: #0071e3;
+      --accent2: #00c3ff;
+      --card-bg: rgba(255,255,255,0.6);
+      --glass-blur: 18px;
+      --shadow: 0 8px 32px 0 rgba(31,38,135,0.12);
+      --radius: 32px;
+      --nav-bg: rgba(245,245,255,0.7);
+      --text: #111;
+      --text-light: #fff;
+      --nav-height: 70px;
+      --transition: 0.3s cubic-bezier(.4,0,.2,1);
+    }
+    [data-theme="dark"] {
+      --primary-light: #18181a;
+      --primary-dark: #f5f5f7;
+      --card-bg: rgba(40,40,50,0.7);
+      --nav-bg: rgba(20,20,30,0.8);
+      --text: #fff;
+      --text-light: #111;
+    }
+    html {scroll-behavior: smooth;}
     body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #fff;
-      line-height: 1.6;
-      scroll-behavior: smooth;
+      font-family: 'Inter', Arial, sans-serif;
+      background: linear-gradient(120deg, var(--primary-light) 70%, var(--accent2) 100%);
+      color: var(--text);
+      margin: 0;
+      transition: background 0.7s, color 0.7s;
+      min-height: 100vh;
     }
-    header {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 2rem;
-    }
-    header h1 { font-size: 3rem; font-weight: 800; }
-    header p { margin-top: 1rem; font-size: 1.3rem; color: #ddd; }
+    /* Glassy Navbar */
     nav {
-      position: fixed;
+      position: sticky;
       top: 0; left: 0; width: 100%;
-      background: rgba(0,0,0,0.6);
-      padding: 1rem;
-      display: flex; justify-content: center; gap: 2rem;
-      z-index: 1000;
+      height: var(--nav-height);
+      display: flex; justify-content: center; align-items: center;
+      gap: 2rem;
+      background: var(--nav-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      box-shadow: var(--shadow);
+      z-index: 50;
+      transition: background .25s;
+      font-weight: 700;
+      font-size: 1.07rem;
     }
     nav a {
-      color: #fff; text-decoration: none; font-weight: 600;
-      transition: 0.3s;
+      color: var(--text);
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      transition: background .2s, color .2s;
+      position: relative;
     }
-    nav a:hover { color: #00f2fe; }
-    section { max-width: 1100px; margin: auto; padding: 5rem 2rem; }
-    h2 { text-align:center; font-size: 2.2rem; margin-bottom: 2rem; }
-    .fade-in { opacity:0; transform: translateY(30px); transition: 0.8s; }
-    .show { opacity:1; transform: translateY(0); }
-
-    /* Skills Grid */
-    .skills, .projects, .certs {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-      gap: 1.5rem;
+    nav a:hover, nav a.active {
+      background: var(--accent);
+      color: #fff;
     }
-    .card {
-      background: rgba(255,255,255,0.07);
-      padding: 2rem;
-      border-radius: 15px;
+    .theme-toggle {
+      cursor: pointer;
+      font-size: 1.3rem;
+      margin-left: 1rem;
+      color: var(--accent);
+      background: none;
+      border: none;
+      outline: none;
+      transition: color .2s;
+    }
+    /* Hero Section */
+    header {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      transition: transform 0.3s;
+      padding: 6rem 1rem 2rem 1rem;
+      background: linear-gradient(120deg,#e3eafc 50%,#f5f5f7 100%);
+      position: relative;
+      overflow: hidden;
     }
-    .card:hover { transform: translateY(-8px); background: rgba(255,255,255,0.15);}
-    .card i { font-size: 2rem; margin-bottom: 1rem; color: #00f2fe;}
-
-    /* Contact */
-    .contact {
-      text-align:center;
+    header .parallax-bg {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at 60% 40%, #00c3ff33 0%, transparent 80%), 
+                  radial-gradient(circle at 40% 80%, #0071e34b 0%, transparent 85%);
+      z-index: 0;
+      pointer-events: none;
+      animation: bgmove 10s linear infinite alternate;
     }
-    .contact a {
-      display:inline-block; margin: 1rem; font-size: 1.2rem;
-      color:#fff; text-decoration:none; padding:0.6rem 1.2rem;
-      border-radius: 30px; background: linear-gradient(45deg,#00f2fe,#4facfe);
-      transition:0.3s;
+    @keyframes bgmove {
+      0% { background-position: 60% 40%, 40% 80%; }
+      100% { background-position: 62% 42%, 39% 77%; }
     }
-    .contact a:hover { opacity:0.8; transform: scale(1.05);}
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      margin-bottom: 1.2rem;
+      letter-spacing: -1.5px;
+      color: var(--accent);
+      z-index: 1;
+      text-shadow: 0 2px 24px #44e0ff44;
+    }
+    header p {
+      font-size: 1.35rem;
+      max-width: 480px;
+      margin: 1.3rem auto 2.4rem auto;
+      color: #444;
+      z-index: 1;
+    }
+    .cta {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 700;
+      padding: 0.9rem 2.7rem;
+      border-radius: 40px;
+      text-decoration: none;
+      box-shadow: 0 6px 24px 0 #0071e333;
+      margin-top: 1.2rem;
+      transition: background .2s;
+      z-index: 1;
+    }
+    .cta:hover { background: #005bb5; }
+    /* Section Basics */
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem 3rem 1.5rem;
+      position: relative;
+    }
+    h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 2.8rem;
+      letter-spacing: -1px;
+      text-align: center;
+    }
+    /* About Card */
+    .about-card {
+      background: var(--card-bg);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      padding: 2.2rem 1.7rem;
+      text-align: center;
+      font-size: 1.15rem;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(var(--glass-blur));
+      transition: background .3s;
+    }
+    .about-card .resume-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      border-radius: 30px;
+      padding: 0.5rem 1.7rem;
+      margin-top: 1.5rem;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .about-card .resume-btn:hover { background: #005bb5; }
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+      gap: 2rem;
+      justify-items: center;
+      margin-bottom: 1.7rem;
+    }
+    .skill-item {
+      background: var(--card-bg);
+      box-shadow: var(--shadow);
+      border-radius: 2rem;
+      padding: 2rem 1.2rem 1.4rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      transition: transform .2s, background .3s;
+      cursor: pointer;
+    }
+    .skill-item:hover {
+      transform: translateY(-8px) scale(1.04);
+      background: rgba(0,113,227,0.08);
+    }
+    .skill-item i, .skill-item img {
+      font-size: 2.5rem;
+      margin-bottom: 0.8rem;
+      color: var(--accent);
+      max-width: 48px;
+      height: 48px;
+    }
+    .skill-tooltip {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      bottom: 110%; left: 50%; transform: translateX(-50%);
+      background: #222;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.97rem;
+      pointer-events: none;
+      transition: opacity .2s;
+      z-index: 2;
+      white-space: nowrap;
+    }
+    .skill-item:hover .skill-tooltip {
+      visibility: visible;
+      opacity: 1;
+    }
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(290px,1fr));
+      gap: 2.3rem;
+      justify-items: center;
+      margin-bottom: 1.7rem;
+    }
+    .project-card {
+      background: var(--card-bg);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      padding: 2.3rem 1.5rem 1.4rem 1.5rem;
+      text-align: left;
+      position: relative;
+      cursor: pointer;
+      min-height: 220px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      transition: transform .25s, background .3s;
+      overflow: hidden;
+    }
+    .project-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      background: rgba(0,113,227,0.09);
+    }
+    .project-card h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+      color: var(--accent);
+    }
+    .project-card p {
+      color: #444;
+      font-size: 1rem;
+    }
+    .project-card .see-details {
+      margin-top: 1.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.01rem;
+      transition: color .2s;
+    }
+    .project-card .see-details:hover { color: #005bb5; }
+    /* Modal Popup */
+    .modal {
+      display: none;
+      position: fixed; z-index: 100;
+      left: 0; top: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.38);
+      align-items: center; justify-content: center;
+      transition: opacity .3s;
+    }
+    .modal.active { display: flex; }
+    .modal-content {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem;
+      max-width: 97vw;
+      width: 380px;
+      box-shadow: var(--shadow);
+      position: relative;
+      text-align: left;
+      animation: modalIn .2s;
+      backdrop-filter: blur(var(--glass-blur));
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(60px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .close-modal {
+      position: absolute;
+      right: 1.5rem; top: 1.1rem;
+      font-size: 1.5rem;
+      background: none; border: none;
+      color: var(--accent);
+      cursor: pointer;
+      z-index: 5;
+      transition: color .2s;
+    }
+    .close-modal:hover { color: #005bb5; }
+    /* Contact Section */
+    .contact-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2.3rem;
+      margin-bottom: 2.5rem;
+    }
+    .contact-card {
+      background: var(--card-bg);
+      box-shadow: var(--shadow);
+      border-radius: 2rem;
+      padding: 1.8rem 1.2rem;
+      min-width: 210px;
+      text-align: center;
+      font-size: 1.15rem;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 0.7rem;
+      transition: background .3s, transform .2s;
+    }
+    .contact-card a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.13rem;
+      transition: color .2s;
+    }
+    .contact-card a:hover { color: #005bb5; }
+    /* Contact Form */
+    .contact-form {
+      max-width: 400px;
+      margin: 2.5rem auto 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      background: var(--card-bg);
+      box-shadow: var(--shadow);
+      border-radius: 2rem;
+      padding: 2.3rem 1.5rem;
+      backdrop-filter: blur(var(--glass-blur));
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      font-size: 1.05rem;
+      padding: 0.7rem 1rem;
+      border-radius: 18px;
+      border: 1px solid #ddd;
+      background: #fafbffbb;
+      margin-bottom: 0.7rem;
+      resize: none;
+      font-family: inherit;
+      outline: none;
+      transition: border .2s;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      border: 1.5px solid var(--accent);
+    }
+    .contact-form button {
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      border-radius: 20px;
+      padding: 0.7rem 0;
+      border: none;
+      font-size: 1.13rem;
+      cursor: pointer;
+      margin-top: 0.6rem;
+      transition: background .2s;
+    }
+    .contact-form button:hover { background: #005bb5; }
+    .form-success, .form-error {
+      text-align: center;
+      font-size: 1.05rem;
+      margin: 0.6rem 0 0.2rem 0;
+    }
+    .form-success { color: #28b76b;}
+    .form-error { color: #d22727;}
+    /* Footer */
     footer {
-      text-align:center; padding:1.5rem; background:#000; color:#aaa;
+      text-align: center;
+      color: #888;
+      padding: 2.2rem 0 1rem 0;
+      font-size: 1rem;
+      background: none;
+    }
+    /* Scroll Animation */
+    .fade-in {
+      opacity: 0; transform: translateY(40px);
+      transition: opacity .9s, transform .7s;
+    }
+    .fade-in.visible {
+      opacity: 1; transform: translateY(0);
+    }
+    /* Responsive */
+    @media (max-width: 700px) {
+      nav { font-size: 0.98rem; }
+      header h1 { font-size: 2.25rem; }
+      h2 { font-size: 1.5rem; }
+      .about-card, .modal-content, .contact-form, .contact-card { padding: 1.4rem 1rem;}
+      .projects-grid, .skills-grid, .contact-cards { gap: 1.3rem;}
+    }
+    @media (max-width: 420px) {
+      header h1 { font-size: 1.5rem;}
+      h2 { font-size: 1.01rem;}
     }
   </style>
 </head>
 <body>
   <nav>
-    <a href="#about">About</a>
+    <a href="#about" class="active">About</a>
     <a href="#skills">Skills</a>
-    <a href="#experience">Experience</a>
-    <a href="#education">Education</a>
-    <a href="#certifications">Certifications</a>
+    <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
+    <button class="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark">
+      <i class="fas fa-moon"></i>
+    </button>
   </nav>
-
   <header>
-    <h1>👋 Hi, I'm Suraj Phawade</h1>
-    <p>Cloud & DevOps Engineer | Azure | Terraform | Kubernetes | CI/CD</p>
+    <div class="parallax-bg"></div>
+    <h1>Suraj Phawade</h1>
+    <p>Cloud & DevOps Engineer. I automate infrastructure, build scalable CI/CD pipelines, and deliver reliable cloud solutions.<br>
+    <span style="color:#888; font-size:1.08rem;">Terraform • Azure • Docker • Kubernetes • Monitoring</span></p>
+    <a href="#contact" class="cta">Let’s Connect</a>
   </header>
-
-  <section id="about" class="fade-in">
-    <h2>Professional Summary</h2>
-    <p>
-      Cloud and DevOps Engineer with 3+ years of IT experience, specializing in Infrastructure as Code (IaC) using Terraform, CI/CD pipeline development in Azure DevOps, and Azure Cloud services. 
-      Proven ability to automate deployments, manage scalable infrastructure, and streamline delivery processes. 
-      Certified in Azure Administrator (AZ-104), Azure DevOps Engineer Expert (AZ-400), and Azure Fundamentals (AZ-900).
-    </p>
-  </section>
-
-  <section id="skills" class="fade-in">
-    <h2>Technical Skills</h2>
-    <div class="skills">
-      <div class="card"><i class="fas fa-cloud"></i> Azure, AWS (basic)</div>
-      <div class="card"><i class="fas fa-code"></i> Terraform, IaC</div>
-      <div class="card"><i class="fas fa-project-diagram"></i> Azure DevOps CI/CD</div>
-      <div class="card"><i class="fab fa-docker"></i> Docker, Kubernetes (AKS)</div>
-      <div class="card"><i class="fas fa-chart-line"></i> Monitoring (Datadog, Log Analytics)</div>
-      <div class="card"><i class="fas fa-terminal"></i> Bash, PowerShell</div>
+  
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="about-card fade-in">
+      <p>
+        Passionate Cloud & DevOps Engineer with expertise in Terraform, Azure, Docker, Kubernetes, and monitoring stacks. I love automating infrastructure and building robust, scalable solutions for businesses.<br>
+        <br>
+        <strong>Open to remote and on-site opportunities.</strong>
+      </p>
+      <a class="resume-btn" href="#" target="_blank"><i class="fas fa-download"></i> Download Resume</a>
     </div>
   </section>
 
-  <section id="experience" class="fade-in">
-    <h2>Professional Experience</h2>
-    <div class="card">
-      <h3>Tata Consultancy Services (TCS) – TD Bank Project</h3>
-      <p><b>Role:</b> Azure DevOps Engineer (2022 – Present)</p>
-      <ul>
-        <li>Designed and implemented CI/CD pipelines in Azure DevOps (YAML + Classic).</li>
-        <li>Developed reusable Terraform modules for Azure resources (VNet, AKS, Key Vault, ACR).</li>
-        <li>Automated provisioning with Terraform Cloud + Azure DevOps integration.</li>
-        <li>Implemented secret management using Azure Key Vault.</li>
-        <li>Containerized applications (.NET, Python) deployed to AKS.</li>
-        <li>Configured monitoring with Azure Monitor, Log Analytics, and Datadog.</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Data Analyst – Previous Role</h3>
-      <ul>
-        <li>Managed data pipelines with Azure Data Factory (ADF).</li>
-        <li>Automated data validation in SQL, reducing manual efforts by 40%.</li>
-        <li>Monitored system health with Datadog, Azure Monitor, Tableau.</li>
-        <li>Created incident reports & automated alerts for proactive monitoring.</li>
-      </ul>
+  <section id="skills">
+    <h2>Skills & Tech Stack</h2>
+    <div class="skills-grid fade-in">
+      <div class="skill-item">
+        <i class="fab fa-microsoft"></i>
+        Azure
+        <div class="skill-tooltip">Cloud Computing (Expert)</div>
+      </div>
+      <div class="skill-item">
+        <i class="fab fa-aws"></i>
+        AWS
+        <div class="skill-tooltip">Cloud (Intermediate)</div>
+      </div>
+      <div class="skill-item">
+        <i class="fas fa-code-branch"></i>
+        Terraform
+        <div class="skill-tooltip">IaC Automation</div>
+      </div>
+      <div class="skill-item">
+        <i class="fab fa-docker"></i>
+        Docker
+        <div class="skill-tooltip">Containers</div>
+      </div>
+      <div class="skill-item">
+        <i class="fab fa-kubernetes"></i>
+        Kubernetes
+        <div class="skill-tooltip">Orchestration (AKS, EKS)</div>
+      </div>
+      <div class="skill-item">
+        <i class="fas fa-terminal"></i>
+        Scripting
+        <div class="skill-tooltip">PowerShell • Bash</div>
+      </div>
+      <div class="skill-item">
+        <i class="fas fa-chart-line"></i>
+        Monitoring
+        <div class="skill-tooltip">Azure Monitor • Datadog</div>
+      </div>
+      <div class="skill-item">
+        <i class="fab fa-git-alt"></i>
+        GitHub Actions
+        <div class="skill-tooltip">CI/CD & Version Control</div>
+      </div>
     </div>
   </section>
 
-  <section id="education" class="fade-in">
-    <h2>Education</h2>
-    <div class="card">
-      <p><b>Bachelor of Computer Engineering</b></p>
-      <p>Savitribai Phule Pune University (2017 – 2020)</p>
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects-grid fade-in">
+      <div class="project-card" data-modal="modal1">
+        <h3>Cloud Onboarding Platform – TD Bank</h3>
+        <p>Automated onboarding using Terraform & Azure DevOps, secure CI/CD pipelines, Dockerized deployments to AKS.</p>
+        <button class="see-details">See details</button>
+      </div>
+      <div class="project-card" data-modal="modal2">
+        <h3>CI/CD Pipeline Automation</h3>
+        <p>End-to-end automation of build, test, and deployment cycles. Reduced manual errors, improved release speed and reliability.</p>
+        <button class="see-details">See details</button>
+      </div>
+      <div class="project-card" data-modal="modal3">
+        <h3>Kubernetes Cost Monitoring</h3>
+        <p>Implemented cluster cost dashboards and alerts using Prometheus, Grafana, and Datadog for proactive cloud cost management.</p>
+        <button class="see-details">See details</button>
+      </div>
+    </div>
+    <!-- Modals -->
+    <div class="modal" id="modal1">
+      <div class="modal-content">
+        <button class="close-modal" aria-label="Close">&times;</button>
+        <h3>Cloud Onboarding Platform – TD Bank</h3>
+        <p>• Automated cloud onboarding deployments using Terraform and Azure DevOps.<br>
+        • Built secure CI/CD pipelines with secret management via Azure Key Vault.<br>
+        • Containerized applications with Docker and deployed to Azure Kubernetes Service (AKS).<br>
+        • Improved onboarding speed and compliance for the Wealth Segment team.</p>
+      </div>
+    </div>
+    <div class="modal" id="modal2">
+      <div class="modal-content">
+        <button class="close-modal" aria-label="Close">&times;</button>
+        <h3>CI/CD Pipeline Automation</h3>
+        <p>• Designed and implemented fully automated build, test, and deployment cycles with GitHub Actions and Azure DevOps.<br>
+        • Reduced manual errors and improved release speed by standardizing processes.<br>
+        • Enabled faster and more reliable shipping of code to production.</p>
+      </div>
+    </div>
+    <div class="modal" id="modal3">
+      <div class="modal-content">
+        <button class="close-modal" aria-label="Close">&times;</button>
+        <h3>Kubernetes Cost Monitoring</h3>
+        <p>• Built advanced monitoring dashboards for Kubernetes clusters using Prometheus and Grafana.<br>
+        • Integrated Datadog for real-time alerting and cost analysis.<br>
+        • Helped teams control cloud spend and optimize resource usage.</p>
+      </div>
     </div>
   </section>
 
-  <section id="certifications" class="fade-in">
-    <h2>Certifications</h2>
-    <div class="certs">
-      <div class="card">AZ-400 – DevOps Engineer Expert</div>
-      <div class="card">AZ-104 – Azure Administrator Associate</div>
-      <div class="card">AZ-900 – Azure Fundamentals</div>
-      <div class="card">AWS Cloud Practitioner</div>
-      <div class="card">Azure DevOps Fundamentals – Noble Work Foundation</div>
-    </div>
-  </section>
-
-  <section id="contact" class="fade-in">
+  <section id="contact">
     <h2>Contact</h2>
-    <div class="contact">
-      <a href="mailto:suraj.phawade1@gmail.com"><i class="fas fa-envelope"></i> Email</a>
-      <a href="tel:+919834207374"><i class="fas fa-phone"></i> Call</a>
-      <a href="https://www.linkedin.com/in/suraj-phawade-8a26a31b2/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-      <a href="https://github.com/surajphawade" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+    <div class="contact-cards fade-in">
+      <div class="contact-card">
+        <i class="fab fa-linkedin"></i>
+        <a href="https://www.linkedin.com/in/suraj-phawade-8a26a31b2/" target="_blank">LinkedIn</a>
+      </div>
+      <div class="contact-card">
+        <i class="fab fa-github"></i>
+        <a href="https://github.com/surajphawade" target="_blank">GitHub</a>
+      </div>
+      <div class="contact-card">
+        <i class="fas fa-envelope"></i>
+        <a href="mailto:suraj@example.com">suraj@example.com</a>
+      </div>
     </div>
+    <form class="contact-form fade-in" id="contactForm" autocomplete="off">
+      <input type="text" name="name" placeholder="Your Name" required/>
+      <input type="email" name="email" placeholder="Your Email" required/>
+      <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+      <div class="form-success" style="display:none;">Thank you! Your message was sent.</div>
+      <div class="form-error" style="display:none;">Error: Please try again later.</div>
+    </form>
   </section>
-
   <footer>
-    <p>© 2025 Suraj Phawade | Built with ❤️ </p>
+    &copy; 2025 Suraj Phawade. Inspired by Apple product design.
   </footer>
-
   <script>
-    // Fade-in animation on scroll
-    const faders = document.querySelectorAll('.fade-in');
-    const appearOptions = { threshold: 0.2 };
-    const appearOnScroll = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("show");
-        observer.unobserve(entry.target);
+    // Navbar section highlight
+    const navLinks = document.querySelectorAll('nav a');
+    window.addEventListener('scroll', () => {
+      let fromTop = window.scrollY + 80;
+      navLinks.forEach(link => {
+        let section = document.querySelector(link.getAttribute('href'));
+        if (section && section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop) {
+          navLinks.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        }
       });
-    }, appearOptions);
-    faders.forEach(fader => { appearOnScroll.observe(fader); });
+    });
+
+    // Fade-in scroll animations
+    const faders = document.querySelectorAll('.fade-in');
+    const fadeInOnScroll = () => {
+      faders.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) {
+          el.classList.add('visible');
+        }
+      });
+    };
+    fadeInOnScroll();
+    window.addEventListener('scroll', fadeInOnScroll);
+
+    // Project modals
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.querySelector('.see-details').onclick = (e) => {
+        e.stopPropagation();
+        document.getElementById(card.getAttribute('data-modal')).classList.add('active');
+      };
+    });
+    document.querySelectorAll('.close-modal').forEach(btn => {
+      btn.onclick = () => btn.closest('.modal').classList.remove('active');
+    });
+    window.onclick = e => {
+      document.querySelectorAll('.modal.active').forEach(modal => {
+        if (e.target === modal) modal.classList.remove('active');
+      });
+    };
+
+    // Simple contact form (demo only)
+    document.getElementById('contactForm').onsubmit = function(e) {
+      e.preventDefault();
+      this.querySelector('.form-success').style.display = 'block';
+      this.querySelector('.form-error').style.display = 'none';
+      this.reset();
+      setTimeout(() => {
+        this.querySelector('.form-success').style.display = 'none';
+      }, 3000);
+    };
+
+    // Light/Dark mode toggle
+    const themeToggle = document.querySelector('.theme-toggle');
+    function setTheme(dark) {
+      document.body.setAttribute('data-theme', dark ? 'dark' : 'light');
+      themeToggle.innerHTML = dark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+    }
+    let darkTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setTheme(darkTheme);
+    themeToggle.onclick = () => {
+      darkTheme = !darkTheme;
+      setTheme(darkTheme);
+    };
   </script>
 </body>
 </html>

@@ -41,6 +41,7 @@
       align-items: center;
       gap: 1rem;
       padding: 0.75rem 0;
+      overflow-x: auto;
     }
     nav a {
       color: var(--primary);
@@ -50,6 +51,7 @@
       padding: 0.5rem 1.2rem;
       border-radius: 22px;
       transition: background .16s, color .16s;
+      white-space: nowrap;
     }
     nav a:hover, nav a.active {
       background: var(--accent);
@@ -67,7 +69,7 @@
       flex-direction: column;
       align-items: flex-start;
       justify-content: center;
-      padding: 3rem 0 2rem 0;
+      padding: 2.5rem 0 2rem 0;
     }
     .hero-block {
       background: var(--header-gradient);
@@ -101,7 +103,7 @@
       letter-spacing: 0.01em;
     }
     .hero-summary {
-      font-size: 1.14rem;
+      font-size: 1.13rem;
       color: #293148;
       margin-bottom: 0.5rem;
       line-height: 1.76;
@@ -109,7 +111,7 @@
     .cert-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.5rem;
+      gap: 1rem;
       margin-top: 0.6rem;
       font-size: 1.02rem;
       color: var(--accent);
@@ -121,7 +123,7 @@
       background: #e9f2fb;
       color: #2254b9;
       border-radius: 12px;
-      padding: 0.19rem 0.8rem 0.19rem 0.62rem;
+      padding: 0.18rem 0.7rem 0.18rem 0.6rem;
       display: flex;
       align-items: center;
       gap: 0.3rem;
@@ -130,7 +132,7 @@
     .contact-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.4rem;
+      gap: 1.2rem;
       margin-top: 0.7rem;
       align-items: center;
       font-size: 1.08rem;
@@ -146,7 +148,7 @@
     }
     .contact-row a:hover { color: var(--accent); }
     section {
-      margin-bottom: 2.7rem;
+      margin-bottom: 2.3rem;
     }
     h2 {
       font-size: 1.25rem;
@@ -286,17 +288,26 @@
       letter-spacing: 0.01em;
       margin-top: 2.5rem;
     }
-    /* Responsive */
-    @media (max-width: 700px) {
-      .container { padding: 0 0.5rem; }
-      .hero-block { padding: 1.2rem 0.8rem; }
-      .skills-list { flex-direction: column; gap: 0.7rem;}
-      .edu-cert-blocks { flex-direction: column; gap: 0.7rem;}
+
+    /* Responsive improvements */
+    @media (max-width: 900px) {
+      .container { max-width: 100vw; }
+      .skills-list, .edu-cert-blocks { flex-wrap: wrap; }
     }
-    @media (max-width: 420px) {
+    @media (max-width: 700px) {
+      .container { padding: 0 0.4rem; }
+      .hero-block { padding: 1.2rem 0.7rem; }
+      .skills-list { flex-direction: column; gap: 0.7rem; padding: 1.1rem 0.5rem;}
+      .edu-cert-blocks { flex-direction: column; gap: 0.7rem;}
+      .skill-card { min-width: 0; width: 100%; }
+    }
+    @media (max-width: 500px) {
       .hero-title { font-size: 1.18rem;}
-      .hero-block { padding: 0.7rem 0.3rem;}
-      .exp-block, .edu-block, .cert-block { padding: 0.7rem 0.4rem;}
+      .hero-block { padding: 0.7rem 0.2rem;}
+      .exp-block, .edu-block, .cert-block { padding: 0.7rem 0.2rem;}
+      .skills-list { padding: 0.7rem 0.1rem;}
+      nav { font-size: 0.93em; gap: 0.2rem;}
+      .contact-row { font-size: 0.97rem; gap: 0.7rem;}
     }
   </style>
 </head>
